@@ -231,12 +231,14 @@ Based on the patterns I found in the data, I would focus on the following areas:
 
 ## Conclusion
 
-This project helped me look at Toronto rideshare operations from more than one angle.
+This project helped me look at Toronto rideshare operations from more than one angle using **Q2 2026** data.
 
-Instead of focusing only on trip volume, I compared **demand**, **vehicle availability**, **wait time**, and **vehicle utilization** to understand how they changed together during **Q2 2026**.
+Instead of looking only at trip volume, I compared **demand**, **vehicle availability**, **passenger wait time**, and **vehicle utilization** to understand how they changed together.
 
-The analysis showed that demand followed clear time and location patterns, vehicle supply generally moved with trip activity, and higher demand did not always mean longer passenger wait times.
+The analysis showed that demand followed clear patterns by **day, hour, and location**, while vehicle supply generally moved with changes in trip activity.
 
-The relationship between vehicle utilization and wait time was positive but modest, which also showed me that no single metric was enough to explain service performance.
+One of the more interesting findings for me was that **higher demand did not always mean longer wait times**. Some lower-volume periods and areas still had relatively high wait times.
 
-Overall, this project helped me build a more complete view of rideshare operations and showed the value of combining several operational measures instead of looking at each one separately.
+I also found a **modest positive relationship** between vehicle utilization and passenger wait time, with a correlation of **0.31**. This suggests that utilization may affect service performance, but it is only one part of the picture.
+
+Overall, the project showed me the value of looking at several operational measures together rather than judging performance from a single metric.
