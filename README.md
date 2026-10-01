@@ -26,7 +26,7 @@ The analysis covers **April, May, and June 2026**.
 
 I used two parts of the dataset:
 
-- monthly trip data, which includes fields such as pickup date, pickup hour, pickup municipality, pickup ward, trip counts, and average wait time;
+- monthly trip data, which includes fields for date, pickup hour, pickup municipality, pickup ward, trip counts, and average wait time;
 - daily summary data, which includes operational measures such as **reported trips started** and **active vehicles**.
 
 I combined the three monthly trip files into one **Q2 2026** dataset in Power Query.
