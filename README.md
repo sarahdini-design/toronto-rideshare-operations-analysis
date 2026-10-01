@@ -20,7 +20,7 @@ The main goal of the project was to build a clearer picture of how demand, suppl
 
 This project uses publicly available rideshare data from the **City of Toronto Open Data Portal**:
 
-- [Private Transportation Companies – Summary and Trip Data]([SOURCE_LINK](https://open.toronto.ca/dataset/private-transportation-companies-summary-and-trip-data))
+- [Private Transportation Companies – Summary and Trip Data](https://open.toronto.ca/dataset/private-transportation-companies-summary-and-trip-data)
 
 The analysis covers **April, May, and June 2026**.
 
