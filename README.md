@@ -42,9 +42,201 @@ I built the report in **Power BI** with two main pages:
 - **Operational Insights** — a deeper look at the relationship between **vehicle utilization and wait time**, changes in **trip demand and active vehicles over time**, and wait-time differences across Toronto pickup wards.
 
 I also added **Month** and **Day Type** slicers so the results can be compared across **April, May, and June 2026** and between **weekdays and weekends**.
+
 ![Toronto Rideshare Operations Dashboard](images/operations-dashboard.png)
 
 
 ## Main Analytical Question
 
 How did **trip demand**, **vehicle availability**, **passenger wait time**, and **vehicle utilization** interact across Toronto rideshare operations during **Q2 2026**?
+
+
+## Analytical Approach
+
+Before starting the analysis, I reviewed the **City of Toronto technical documentation** to understand how the data was collected, grouped, and reported.
+
+One important point was that the trip data does not represent individual rides. The data is already **aggregated by hour and pickup/drop-off location**. Because each row can represent a different number of trips, I used **trip volume as a weight** when calculating average wait time instead of taking a simple average of the published `waittime_avg` values.
+
+I also noted that some trip records do not include ward-level detail because of the City's privacy rules. These records appear as **Not included elsewhere** and were not used when comparing individual Toronto wards.
+
+The documentation also notes that **trip cancellation counts dropped significantly starting in January 2026** and may have been affected by a methodological change. Since my analysis covers **Q2 2026**, I decided not to use cancellation metrics in the main analysis.
+
+I then used **Power Query** to combine the trip files for **April, May, and June 2026** into one Q2 dataset.
+
+I built a separate **DimDate** table and connected it to both the trip and summary data. I added fields for **month**, **day of week**, and **weekday/weekend** so I could use the same time filters across the report.
+
+For the analysis, I created several DAX measures, including:
+
+- **Total Trips** to measure overall trip activity;
+- **Weighted Avg Wait Time** to account for the different number of trips represented by each row;
+- **Average Active Vehicles** to represent vehicle availability;
+- **Trips per Active Vehicle-Day** as a simple measure of vehicle utilization;
+- **Avg Daily Trips** to compare activity across days of the week;
+- **Avg Trips per Hour** to compare hourly demand patterns.
+
+I also created **Day Type** to compare hourly trip patterns between **weekdays and weekends**.
+
+Finally, I compared daily vehicle utilization with passenger wait time and calculated a correlation measure to see whether higher utilization was associated with longer waits.
+
+
+## Question 1: When and where is completed rideshare activity concentrated?
+
+### Finding
+
+During **Q2 2026**, the data shows **24,891,477 completed trips**.
+
+Trip activity followed a clear weekly pattern. Average daily trips generally increased toward the end of the week, with **Saturday having the highest average daily trip volume at 324,439 trips**.
+
+The hourly pattern also showed a clear difference between weekdays and weekends. At **8:00 AM**, average hourly demand was **15,397 trips on weekdays** compared with **8,795 on weekends**.
+
+By the late afternoon, the difference became much smaller. At **6:00 PM**, average hourly demand was **16,561 trips on weekdays** and **16,537 on weekends**.
+
+Location also made a large difference. **Ward 10 – Spadina-Fort York** had the highest pickup volume, followed by **Ward 13 – Toronto Centre** and **Ward 11 – University-Rosedale**.
+
+### Insight
+
+What stood out to me was how much rideshare demand changed depending on **time and location**.
+
+Demand was stronger toward the end of the week, while weekday and weekend patterns were very different in the morning. By the evening, however, demand became much more similar.
+
+Trip activity was also concentrated in a small group of Toronto wards, especially **Spadina-Fort York**.
+
+### Recommendation
+
+Vehicle planning should take these recurring demand patterns into account.
+
+More vehicle availability may be useful during higher-demand periods, especially toward the end of the week and during busy afternoon and evening hours.
+
+High-volume pickup areas such as **Spadina-Fort York**, **Toronto Centre**, and **University-Rosedale** should also receive closer attention when planning vehicle coverage.
+
+
+## Question 2: Does vehicle supply keep pace with changes in trip activity?
+
+### Finding
+
+The daily data showed that **active vehicle supply generally moved in the same direction as trip activity**.
+
+For example, on **May 18, 2026**, there were **196,817 reported trips started** and **27,538 active vehicles**.
+
+On **May 23, 2026**, reported trips increased to **377,072**, while active vehicles increased to **35,796**.
+
+This shows that more vehicles were active when trip demand was higher, although vehicle supply did not increase as quickly as trip activity.
+
+### Insight
+
+What stood out to me was that vehicle availability was responsive to changes in demand, but the relationship was not one-to-one.
+
+Higher-demand days had more active vehicles, but each active vehicle still had to support more trip activity during the busiest periods.
+
+This suggests that looking only at the number of active vehicles does not fully explain whether supply is keeping pace with demand.
+
+### Recommendation
+
+Vehicle supply should continue to be monitored together with trip activity rather than as a separate metric.
+
+On higher-demand days, it would be useful to track whether the increase in active vehicles is enough to maintain service levels and avoid putting too much pressure on each vehicle.
+
+
+## Question 3: Where and when do riders experience longer wait times, and how does that compare with trip activity?
+
+### Finding
+
+Wait time did not always move with trip demand.
+
+**Sunday** had the highest weighted average wait time at **6.19 minutes**, even though average daily trip volume was **260,937 trips**.
+
+By comparison, **Saturday** had the highest average daily trip volume at **324,439 trips**, but its weighted average wait time was lower at **5.88 minutes**.
+
+A similar pattern appeared across pickup wards.
+
+Among the top 10 Toronto pickup wards, **York Centre** had the highest weighted average wait time at **6.49 minutes**.
+
+In comparison, **Spadina-Fort York**, which had the highest pickup volume, had a lower weighted average wait time of **5.54 minutes**. **University-Rosedale** had the lowest wait time among the top 10 wards at **5.40 minutes**.
+
+### Insight
+
+What stood out to me was that higher trip volume did not always mean longer passenger wait times.
+
+Sunday had lower trip activity than Saturday but a longer average wait time. The same pattern appeared across wards, where **York Centre** had the longest wait time even though it was not one of the highest-volume pickup areas.
+
+This suggests that wait time may depend on more than demand alone. Vehicle availability and where vehicles are positioned may also play an important role.
+
+### Recommendation
+
+Wait time should be monitored together with trip volume rather than using demand alone to decide where more vehicles are needed.
+
+Periods such as **Sunday** and areas such as **York Centre** may need closer attention because their wait times were relatively high even without the highest trip volumes.
+
+
+## Question 4: Is higher vehicle utilization associated with longer passenger wait times?
+
+### Finding
+
+I compared daily **Trips per Active Vehicle-Day** with **Weighted Avg Wait Time** to see whether busier vehicles were associated with longer passenger waits.
+
+The scatter plot showed a modest upward pattern, and the correlation between the two measures was **0.31**.
+
+This indicates a **modest positive relationship**: days with higher vehicle utilization tended to have somewhat longer passenger wait times.
+
+### Insight
+
+What stood out to me was that higher utilization was related to longer wait times, but the relationship was not very strong.
+
+This suggests that vehicle utilization may be one part of the wait-time picture, but it does not explain the variation by itself.
+
+Other factors, such as **where vehicles are available**, **time of day**, and changes in local demand may also affect passenger wait times.
+
+### Recommendation
+
+Vehicle utilization should be monitored together with passenger wait time rather than treated as a separate efficiency measure.
+
+A higher number of trips per active vehicle may improve vehicle productivity, but if utilization becomes too high, service quality may begin to suffer.
+
+The **0.31 correlation** does not show causation, so more detailed analysis would be needed before setting a specific utilization target.
+
+
+## Limitations
+
+I kept several limitations in mind while interpreting the results.
+
+- The trip data is already **aggregated by hour and location**, so it does not represent individual rides. This means I could analyze overall patterns, but not rider-level variation.
+
+- Some records do not include **ward-level detail** because of the City's privacy rules. These records appear as **Not included elsewhere**, so the ward analysis does not represent every completed trip.
+
+- **Active Vehicles** is available as a daily summary measure. Because of this, I could compare daily vehicle supply with daily trip activity, but I could not measure vehicle availability directly by **ward or hour**.
+
+- The City notes that **cancellation data from January 2026 onward may have been affected by a methodological change**. Since this project covers **Q2 2026**, I did not use cancellation metrics in the main analysis.
+
+- The analysis covers only **three months: April through June 2026**. The patterns found here may not represent other seasons or longer-term rideshare behaviour.
+
+- The **0.31 correlation** between vehicle utilization and wait time shows an association, not causation. Other factors may also affect passenger wait times.
+
+
+## Final Recommendations
+
+Based on the patterns I found in the data, I would focus on the following areas:
+
+- Plan vehicle coverage around recurring demand patterns, especially during **higher-demand days and late afternoon/evening hours**.
+
+- Pay closer attention to high-volume pickup areas such as **Spadina-Fort York**, **Toronto Centre**, and **University-Rosedale** when planning vehicle availability.
+
+- Monitor **wait time together with trip volume**. Higher demand did not always lead to longer waits, so demand alone should not be used to judge service performance.
+
+- Review areas such as **York Centre**, where wait time was relatively high even though trip volume was not among the highest.
+
+- Track **Trips per Active Vehicle-Day** together with wait time. The **0.31 correlation** suggests that higher utilization may be linked with somewhat longer waits, but more detailed data would be needed before setting any specific utilization target.
+
+- Continue comparing **vehicle supply and trip activity** over time to see whether increases in active vehicles are enough during higher-demand periods.
+
+
+## Conclusion
+
+This project helped me look at Toronto rideshare operations from more than one angle.
+
+Instead of focusing only on trip volume, I compared **demand**, **vehicle availability**, **wait time**, and **vehicle utilization** to understand how they changed together during **Q2 2026**.
+
+The analysis showed that demand followed clear time and location patterns, vehicle supply generally moved with trip activity, and higher demand did not always mean longer passenger wait times.
+
+The relationship between vehicle utilization and wait time was positive but modest, which also showed me that no single metric was enough to explain service performance.
+
+Overall, this project helped me build a more complete view of rideshare operations and showed the value of combining several operational measures instead of looking at each one separately.
