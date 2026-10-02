@@ -43,7 +43,8 @@ I built the report in **Power BI** with two main pages:
 ![Toronto Rideshare Operations Dashboard](images/operations_dashboard.png)
   *Toronto rideshare operations overview for Q2 2026.*
 
-- **Operational Insights** — a deeper look at the relationship between **vehicle utilization and wait time**, changes in **trip demand and active vehicles over time**, and wait-time differences across Toronto pickup wards.
+
+**Operational Insights** — a deeper look at the relationship between **vehicle utilization and wait time**, changes in **trip demand and active vehicles over time**, and wait-time differences across Toronto pickup wards.
 
 ![Operational Insights Dashboard](images/operational_insight.png)
 *Operational view of vehicle utilization, wait time, vehicle availability, and Toronto pickup wards.*
