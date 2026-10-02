@@ -38,11 +38,15 @@ Using the trip data together with the daily summary data allowed me to look at b
 
 I built the report in **Power BI** with two main pages:
 
-- **Operations Dashboard** — a high-level view of trip volume, wait time, active vehicles, vehicle utilization, day-of-week patterns, and pickup locations.
-  ![Toronto Rideshare Operations Dashboard](images/operations_dashboard.png)
+**Operations Dashboard** — a high-level view of trip volume, wait time, active vehicles, vehicle utilization, day-of-week patterns, and pickup locations.
+
+![Toronto Rideshare Operations Dashboard](images/operations_dashboard.png)
   *Toronto rideshare operations overview for Q2 2026.*
 
 - **Operational Insights** — a deeper look at the relationship between **vehicle utilization and wait time**, changes in **trip demand and active vehicles over time**, and wait-time differences across Toronto pickup wards.
+
+![Operational Insights Dashboard](images/operational_insight.png)
+*Operational view of vehicle utilization, wait time, vehicle availability, and Toronto pickup wards.*
 
 I also added **Month** and **Day Type** slicers so the results can be compared across **April, May, and June 2026** and between **weekdays and weekends**.
 
