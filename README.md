@@ -36,7 +36,7 @@ Using the trip data together with the daily summary data allowed me to look at b
 
 ## Power BI Dashboard
 
-I built the report in **Power BI** with two main pages:
+I built the report in **Power BI** with two main dashboards:
 
 **Operations Dashboard** — a high-level view of trip volume, wait time, active vehicles, vehicle utilization, day-of-week patterns, and pickup locations.
 
@@ -134,7 +134,7 @@ For example, on **May 18, 2026**, there were **196,817 reported trips started** 
 
 On **May 23, 2026**, reported trips increased to **377,072**, while active vehicles increased to **35,796**.
 
-This shows that more vehicles were active when trip demand was higher, although vehicle supply did not increase as quickly as trip activity.
+This shows that more vehicles were active when trip demand was higher. In this comparison, trip activity increased faster than active vehicle supply.
 
 ![Trip demand and active vehicles over time](images/demand_vs_active_vehicles.png)
 *Daily reported trips started and active vehicles during Q2 2026.*
@@ -179,7 +179,7 @@ What stood out to me was that higher trip volume did not always mean longer pass
 
 Sunday had lower trip activity than Saturday but a longer average wait time. The same pattern appeared across wards, where **York Centre** had the longest wait time even though it was not one of the highest-volume pickup areas.
 
-This suggests that wait time may depend on more than demand alone. Vehicle availability and where vehicles are positioned may also play an important role.
+This suggests that wait time may depend on more than demand alone. Vehicle availability and vehicle distribution across the city could also be contributing factors.
 
 ### Recommendation
 
@@ -207,15 +207,16 @@ What stood out to me was that higher utilization was related to longer wait time
 
 This suggests that vehicle utilization may be one part of the wait-time picture, but it does not explain the variation by itself.
 
-Other factors, such as **where vehicles are available**, **time of day**, and changes in local demand may also affect passenger wait times.
+Other factors, such as **where vehicles are available**, **time of day**, and changes in local demand could also contribute to passenger wait times.
 
 ### Recommendation
 
 Vehicle utilization should be monitored together with passenger wait time rather than treated as a separate efficiency measure.
 
-A higher number of trips per active vehicle may improve vehicle productivity, but if utilization becomes too high, service quality may begin to suffer.
+Higher trips per active vehicle can indicate greater vehicle productivity, but very high utilization may also coincide with longer wait times and should be monitored carefully.
 
-The **0.31 correlation** does not show causation, so more detailed analysis would be needed before setting a specific utilization target.
+The **0.31 correlation** does not establish causation and this relationship is associative, so more detailed analysis would be needed before setting a specific utilization target. 
+
 
 
 ## Limitations
@@ -224,7 +225,7 @@ I kept several limitations in mind while interpreting the results.
 
 - The trip data is already **aggregated by hour and location**, so it does not represent individual rides. This means I could analyze overall patterns, but not rider-level variation.
 
-- Some records do not include **ward-level detail** because of the City's privacy rules. These records appear as **Not included elsewhere**, so the ward analysis does not represent every completed trip.
+- Some records do not include **ward-level detail** because of the City's privacy rules. These records appear as **Not included elsewhere**, so the ward analysis does not represent all trip activity.
 
 - **Active Vehicles** is available as a daily summary measure. Because of this, I could compare daily vehicle supply with daily trip activity, but I could not measure vehicle availability directly by **ward or hour**.
 
