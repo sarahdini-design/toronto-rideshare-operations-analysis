@@ -103,6 +103,10 @@ By the late afternoon, the difference became much smaller. At **6:00 PM**, avera
 
 Location also made a large difference. **Ward 10 – Spadina-Fort York** had the highest pickup volume, followed by **Ward 13 – Toronto Centre** and **Ward 11 – University-Rosedale**.
 
+![Rideshare demand patterns by time and location](images/demand_time_location_pattern.png)
+*Trip demand patterns by day, hour, and Toronto pickup ward during Q2 2026.*
+
+
 ### Insight
 
 What stood out to me was how much rideshare demand changed depending on **time and location**.
