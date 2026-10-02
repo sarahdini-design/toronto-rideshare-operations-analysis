@@ -45,7 +45,7 @@ I also added **Month** and **Day Type** slicers so the results can be compared a
 
 ## Interactive Dashboard
 
-[View the interactive Power BI dashboard.]([POWER_BI_PUBLIC_LINK](https://app.powerbi.com/links/AK_AqI-p4K?ctid=c9d5b4dd-edc8-4fac-ae79-d4544895bf2d&pbi_source=linkShare)
+[View the interactive Power BI dashboard.](https://app.powerbi.com/links/AK_AqI-p4K?ctid=c9d5b4dd-edc8-4fac-ae79-d4544895bf2d&pbi_source=linkShare)
 
 
 ## Main Analytical Question
