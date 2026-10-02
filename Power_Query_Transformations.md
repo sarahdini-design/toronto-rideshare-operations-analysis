@@ -155,7 +155,7 @@ These calculations are documented separately because they were created in the Po
 
 See:
 
-[`Calculated_Columns.md`](./Calculated_Columns.md)
+[`Model_Calculations.md`](./Model_Calculations.md)
 
 ---
 
