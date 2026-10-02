@@ -28,7 +28,7 @@ This created one dataset covering the full **Q2 2026** analysis period.
 
 ## Combining the Monthly Files
 
-The three monthly trip files followed the same structure, so I appended them into a single table.
+The three monthly trip files followed the same structure, so I combined them into a single table using Power Query's Combine Files process.
 
 The combined table allowed the same calculations and visuals to be used across the full quarter instead of working with each month separately.
 
@@ -44,7 +44,7 @@ This represents **91 calendar days**.
 
 After combining the monthly files, I reviewed and standardized the data types used in the analysis.
 
-In Power Query, the main fields were set as:
+In Power Query, the main retained fields were assigned the following data types:
 
 | Field | Power Query Type | Purpose |
 |---|---|---|
@@ -59,9 +59,7 @@ In Power Query, the main fields were set as:
 | `waittime_avg` | Decimal Number | Average passenger wait time. |
 | `duration_avg` | Decimal Number | Average trip duration. |
 
-The `dt` field was converted to **Date**, while `pickup_hr` was kept as **Date/Time/Timezone**.
-
-Later, I created a separate `Pickup Hour` calculated column from `pickup_hr` for the hourly demand analysis.
+The `dt` field was converted to a date-only field for daily analysis and model relationships as **Date**, while `pickup_hr` was kept as **Date/Time/Timezone** so the pickup hour could still be derived later.
 
 ## Data Quality Checks
 
@@ -131,6 +129,7 @@ Measures such as:
 - **Average Active Vehicles**
 - **Trips per Active Vehicle-Day**
 - **Avg Daily Trips**
+- **Reported Trips Started**
 - **Avg Trips per Hour**
 - **Utilization-Wait Correlation**
 
