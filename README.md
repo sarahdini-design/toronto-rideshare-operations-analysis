@@ -43,7 +43,7 @@ I built the report in **Power BI** with two main pages:
 
 I also added **Month** and **Day Type** slicers so the results can be compared across **April, May, and June 2026** and between **weekdays and weekends**.
 
-# Interactive Dashboard
+### Interactive Dashboard
 
 [View the interactive Power BI dashboard.](https://app.powerbi.com/links/AK_AqI-p4K?ctid=c9d5b4dd-edc8-4fac-ae79-d4544895bf2d&pbi_source=linkShare)
 
