@@ -136,6 +136,9 @@ On **May 23, 2026**, reported trips increased to **377,072**, while active vehic
 
 This shows that more vehicles were active when trip demand was higher, although vehicle supply did not increase as quickly as trip activity.
 
+![Trip demand and active vehicles over time](images/demand_vs_active_vehicles.png)
+*Daily reported trips started and active vehicles during Q2 2026.*
+
 ### Insight
 
 What stood out to me was that vehicle availability was responsive to changes in demand, but the relationship was not one-to-one.
@@ -167,6 +170,9 @@ Among the top 10 Toronto pickup wards, **York Centre** had the highest weighted 
 
 In comparison, **Spadina-Fort York**, which had the highest pickup volume, had a lower weighted average wait time of **5.54 minutes**. **University-Rosedale** had the lowest wait time among the top 10 wards at **5.40 minutes**.
 
+![Wait time patterns by day and pickup ward](images/wait_time_patterns_by_day_and_ward.png)
+*Trip demand and weighted average wait time by day of week, alongside wait-time differences across the top 10 Toronto pickup wards.*
+
 ### Insight
 
 What stood out to me was that higher trip volume did not always mean longer passenger wait times.
@@ -191,6 +197,9 @@ I compared daily **Trips per Active Vehicle-Day** with **Weighted Avg Wait Time*
 The scatter plot showed a modest upward pattern, and the correlation between the two measures was **0.31**.
 
 This indicates a **modest positive relationship**: days with higher vehicle utilization tended to have somewhat longer passenger wait times.
+
+![Vehicle utilization and passenger wait time](images/utilization_vs_wait_time.png)
+*Daily vehicle utilization compared with weighted average passenger wait time during Q2 2026.*
 
 ### Insight
 
