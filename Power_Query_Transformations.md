@@ -40,22 +40,28 @@ This represents **91 calendar days**.
 
 ---
 
-## Data Type Checks
+## Data Type Preparation
 
-After combining the monthly files, I reviewed the field types to make sure they were appropriate for analysis in Power BI.
+After combining the monthly files, I reviewed and standardized the data types used in the analysis.
 
-The main fields used in the project were prepared as follows:
+In Power Query, the main fields were set as:
 
-| Field | Data Type | Reason |
+| Field | Power Query Type | Purpose |
 |---|---|---|
-| `dt` | Date | Used for daily trends and connection to the date table. |
-| `pickup_hr` | Date/Time | Used to derive pickup hour for hourly demand analysis. |
-| `pickup_municipality` | Text | Used for geographic filtering. |
-| `pickup_ward` | Text | Used for Toronto ward-level analysis. |
-| `trips_total` | Whole Number | Used to calculate total completed trips. |
-| `waittime_avg` | Decimal Number | Used in passenger wait-time calculations. |
+| `dt` | Date | Keeps only the calendar date for daily analysis and model relationships. |
+| `pickup_hr` | Date/Time/Timezone | Preserves the pickup timestamp and timezone information for hourly analysis. |
+| `pickup_municipality` | Text | Geographic filtering and grouping. |
+| `pickup_community_council` | Text | Geographic reference field. |
+| `pickup_ward` | Text | Ward-level analysis. |
+| `trips_total` | Whole Number | Completed trip volume. |
+| `fare_avg` | Decimal Number | Average fare value from the source data. |
+| `distance_avg` | Decimal Number | Average trip distance from the source data. |
+| `waittime_avg` | Decimal Number | Average passenger wait time. |
+| `duration_avg` | Decimal Number | Average trip duration. |
 
----
+The `dt` field was converted to **Date**, while `pickup_hr` was kept as **Date/Time/Timezone**.
+
+Later, I created a separate `Pickup Hour` calculated column from `pickup_hr` for the hourly demand analysis.
 
 ## Data Quality Checks
 
