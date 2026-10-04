@@ -5,15 +5,7 @@ An analysis of Toronto rideshare activity during Q2 2026, focused on trip demand
 **Tools:** Power BI · Power Query · DAX · GitHub
 
 
-## Key Findings
 
-- Median P90 wait time for **initial physician assessment** increased from **2.5 hours in 2020–2021** to **4.3 hours in 2024–2025**.
-
-- **Admitted-patient ED stay** increased from **23.0 hours** to **35.6 hours by 2022–2023**, then improved somewhat to about **33.3 hours in 2024–2025**.
-
-- Across the 64 Ontario hospital corporations, **9 showed persistent gaps in both ED indicators**, while others showed gaps mainly in only one stage of the ED journey.
-
-- Persistent gaps appeared across **all four hospital peer groups**, and the latest-year result did not always tell the same story as the five-year pattern.
 
 
 ## Project Overview
