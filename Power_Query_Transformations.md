@@ -91,7 +91,7 @@ The main fields used from this table were:
 - `reported_trips_started`
 - `active_vehicles`
 
-This table was later used to compare daily trip activity with vehicle availability.
+This table was later used to compare daily trip activity with the active vehicle count.
 
 Unlike the trip table, I did not combine this data with the trip records in Power Query because the two datasets have different levels of detail.
 
@@ -131,7 +131,7 @@ Measures such as:
 - **Avg Daily Trips**
 - **Reported Trips Started**
 - **Avg Trips per Hour**
-- **Utilization-Wait Correlation**
+- **Activity-Wait Correlation**
 
 were created later using DAX.
 
