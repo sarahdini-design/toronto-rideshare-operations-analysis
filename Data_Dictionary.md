@@ -29,7 +29,7 @@ This means one row does not represent one individual ride. A row can represent m
 | Field | Source / Created | Data Type | Description | Used For |
 |---|---|---|---|---|
 | `dt` | Source | Date | Date of passenger pickup. | Daily and quarterly trip analysis. |
-| `pickup_hr` | Source | Date/Time | Date and hour of passenger pickup. | Creating the hourly demand view. |
+| `pickup_hr` | Source | Date/Time/Timezone | Date and hour of passenger pickup. | Creating the hourly demand view. |
 | `pickup_municipality` | Source | Text | Municipality at the passenger pickup point. | Keeping the geographic analysis focused on Toronto. |
 | `pickup_ward` | Source | Text | Toronto ward at the passenger pickup point when ward-level detail is available. | Comparing trip volume and wait time across Toronto wards. |
 | `trips_total` | Source | Whole Number | Number of completed trips represented by the grouped row. | Total Trips and weighted wait-time calculations. |
@@ -94,8 +94,8 @@ Unlike the trip table, which is grouped by hour and location, this table is repo
 | Field | Source / Created | Data Type | Description | Used For |
 |---|---|---|---|---|
 | `dt` | Source | Date | Date of the daily summary record. | Connecting daily operational data to the date table. |
-| `reported_trips_started` | Source | Whole Number | Number of completed trips that started on the specified date. | Daily trip-demand and vehicle-supply comparisons. |
-| `active_vehicles` | Source | Whole Number | Number of unique vehicles active on a PTC platform during the day. | Vehicle availability and utilization analysis. |
+| `reported_trips_started` | Source | Whole Number | Number of completed trips that started on the specified date. | Daily trip-activity and active-vehicle comparisons. |
+| `active_vehicles` | Source | Whole Number | Number of unique vehicles active on a PTC platform during the day. | Daily active vehicle count and Trips per Active Vehicle-Day analysis. |
 
 The source table contains additional operational fields, but only the fields used directly in this project are documented here.
 
@@ -151,7 +151,7 @@ The main measures include:
 - **Trips per Active Vehicle-Day**
 - **Avg Daily Trips**
 - **Avg Trips per Hour**
-- **Utilization-Wait Correlation**
+--**Activity-Wait Correlation**
 
 Keeping the measures in a separate file makes it easier to see the calculation logic without mixing it with the source-field documentation.
 
@@ -164,5 +164,6 @@ A few details from the City of Toronto technical documentation were important wh
 - Trip data is already **aggregated by hour and pickup/drop-off location**.
 - Some records do not include ward-level detail because of privacy rules and appear as **Not included elsewhere**.
 - `waittime_avg` is an average for each grouped row, so I created a **weighted average wait-time measure** using `trips_total`.
-- `active_vehicles` is available at the **daily level**, so vehicle availability could be compared by date but not directly by ward or hour.
+- `active_vehicles` is available at the **daily level**, so I could compare daily active vehicle count with trip activity but could not measure vehicle availability directly by ward or hour.
+- **Trips per Active Vehicle-Day** is used as a simple activity/productivity measure and should not be interpreted as a time-based utilization rate.
 - The City notes that cancellation data from **January 2026 onward** may have been affected by a methodological change. Cancellation measures were therefore not used in the main analysis.
