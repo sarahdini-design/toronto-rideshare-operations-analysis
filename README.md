@@ -5,7 +5,15 @@ An analysis of Toronto rideshare activity during Q2 2026, focused on trip demand
 **Tools:** Power BI · Power Query · DAX · GitHub
 
 
+## Key Findings
 
+- Q2 2026 included approximately **24.9 million completed trips**, with **Saturday** showing the highest average daily trip volume at about **324,439 trips**.
+
+- **Sunday** had the highest weighted average wait time at **6.19 minutes**, despite having lower trip volume than Saturday.
+
+- **Spadina-Fort York** had the highest pickup volume, while **York Centre** had the highest weighted average wait time among the top 10 pickup wards at **6.49 minutes**.
+
+- Daily vehicle utilization and passenger wait time showed a **modest positive association (r = 0.31)**, suggesting that higher utilization sometimes coincided with longer waits but did not explain wait-time patterns on its own.
 
 
 ## Project Overview
