@@ -48,7 +48,7 @@ This close reconciliation gave me additional confidence that the two source tabl
 
 I combined the three monthly trip files into one **Q2 2026** dataset in Power Query.
 
-Using the trip data together with the daily summary data allowed me to look at both trip activity and vehicle availability during the quarter.
+Using the trip data together with the daily summary data allowed me to compare trip activity with the daily active vehicle count during the quarter.
 
 
 ## Power BI Dashboard
@@ -66,7 +66,8 @@ I built the report in **Power BI** with two main dashboards:
 **Operational Insights** — a deeper look at the relationship between **Trips per Active Vehicle-Day and wait time**, changes in **trip demand and active vehicles over time**, and wait-time differences across Toronto pickup wards.
 
 ![Operational Insights Dashboard](images/operational_insight.png)
-*Operational view of vehicle utilization, wait time, vehicle availability, and Toronto pickup wards.*
+*Operational view of trips per active vehicle-day, wait time, active vehicle count, and Toronto pickup wards.*
+
 
 I also added **Month** and **Day Type** slicers so the results can be compared across **April, May, and June 2026** and between **weekdays and weekends**.
 
@@ -160,7 +161,7 @@ In this example, both trip activity and active vehicle count increased, although
 
 ### Insight
 
-What stood out to me was that active vehicle count generally responded to changes in trip activity, but the relationship was not one-to-one.
+What stood out to me was that active vehicle count generally moved with changes in trip activity, but the relationship was not one-to-one.
 
 On higher-demand days, the number of trips per active vehicle could still increase even when more vehicles were active.
 
@@ -221,7 +222,7 @@ The scatter plot showed a modest upward pattern, and the correlation between the
 This indicates a **modest positive association**: days with more trips per active vehicle tended to have somewhat longer passenger wait times.
 
 ![Trips per Active Vehicle-Day vs Wait Time](images/trips_per_vehicle_vs_wait_time.png)
-*Daily vehicle utilization compared with weighted average passenger wait time during Q2 2026.*
+*Daily Trips per Active Vehicle-Day compared with weighted average passenger wait time during Q2 2026.*
 
 ### Insight
 
@@ -259,18 +260,17 @@ I kept several limitations in mind while interpreting the results.
 
 Based on the patterns I found in the data, I would focus on the following areas:
 
-- Plan vehicle coverage around recurring demand patterns, especially during **higher-demand days and late afternoon/evening hours**.
+- Monitor active vehicle count alongside recurring demand patterns, especially during **higher-demand days and late afternoon/evening hours**.
 
-- Pay closer attention to high-volume pickup areas such as **Spadina-Fort York**, **Toronto Centre**, and **University-Rosedale** when planning vehicle availability.
+- Use high-volume pickup areas such as **Spadina-Fort York**, **Toronto Centre**, and **University-Rosedale** as priorities for further location-level service review.
 
 - Monitor **wait time together with trip volume**. Higher demand did not always lead to longer waits, so demand alone should not be used to judge service performance.
 
 - Review areas such as **York Centre**, where wait time was relatively high even though trip volume was not among the highest.
 
--**Trips per Active Vehicle-Day** together with wait time. The **0.31 correlation** shows a modest association, but more detailed analysis would be needed before using this measure to set any operational target.
+- Track **Trips per Active Vehicle-Day** together with wait time. The **0.31 correlation** shows a modest association, but more detailed analysis would be needed before using this measure to set any operational target.
 
 - Continue comparing **active vehicle count and trip activity** over time to see how closely vehicle activity changes with higher-demand periods.
-
 
 ## Conclusion
 
