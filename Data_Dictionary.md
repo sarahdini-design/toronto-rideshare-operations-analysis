@@ -151,7 +151,7 @@ The main measures include:
 - **Trips per Active Vehicle-Day**
 - **Avg Daily Trips**
 - **Avg Trips per Hour**
---**Activity-Wait Correlation**
+-**Activity-Wait Correlation**
 
 Keeping the measures in a separate file makes it easier to see the calculation logic without mixing it with the source-field documentation.
 
