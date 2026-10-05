@@ -137,38 +137,39 @@ More vehicle availability may be useful during higher-demand periods, especially
 High-volume pickup areas such as **Spadina-Fort York**, **Toronto Centre**, and **University-Rosedale** should also receive closer attention when planning vehicle coverage.
 
 
-## Question 2: Does vehicle supply keep pace with changes in trip activity?
+## Question 2: How does active vehicle count change with trip activity?
 
 ### Finding
 
-The daily data showed that **active vehicle supply generally moved in the same direction as trip activity**.
+Across the **91-day Q2 period**, active vehicle count generally moved in the same direction as trip activity.
+
+The dates below are examples of this broader daily pattern rather than the basis for the conclusion.
 
 For example, on **May 18, 2026**, there were **196,817 reported trips started** and **27,538 active vehicles**.
 
 On **May 23, 2026**, reported trips increased to **377,072**, while active vehicles increased to **35,796**.
 
-This shows that more vehicles were active when trip demand was higher. In this comparison, trip activity increased faster than active vehicle supply.
+In this example, both trip activity and active vehicle count increased, although trip activity increased at a faster rate.
 
 ![Trip demand and active vehicles over time](images/demand_vs_active_vehicles.png)
 *Daily reported trips started and active vehicles during Q2 2026.*
 
 ### Insight
 
-What stood out to me was that vehicle availability was responsive to changes in demand, but the relationship was not one-to-one.
+What stood out to me was that active vehicle count generally responded to changes in trip activity, but the relationship was not one-to-one.
 
-Higher-demand days had more active vehicles, but each active vehicle still had to support more trip activity during the busiest periods.
+On higher-demand days, the number of trips per active vehicle could still increase even when more vehicles were active.
 
-This suggests that looking only at the number of active vehicles does not fully explain whether supply is keeping pace with demand.
+This suggests that active vehicle count and trip activity are more useful when viewed together rather than as separate measures.
 
 ### Recommendation
 
-Vehicle supply should continue to be monitored together with trip activity rather than as a separate metric.
+Active vehicle count should be monitored together with trip activity and **Trips per Active Vehicle-Day**.
 
-On higher-demand days, it would be useful to track whether the increase in active vehicles is enough to maintain service levels and avoid putting too much pressure on each vehicle.
+This would make it easier to identify periods when trip activity is increasing faster than the number of active vehicles, while avoiding assumptions about whether vehicle supply was sufficient without more detailed availability data.
 
 
-## Question 3: Where and when do riders experience longer wait times, and how does that compare with trip activity?
-
+## Question 3: On which days and in which pickup wards do riders experience longer wait times?
 ### Finding
 
 Wait time did not always move with trip demand.
@@ -183,6 +184,8 @@ Among the top 10 Toronto pickup wards, **York Centre** had the highest weighted 
 
 In comparison, **Spadina-Fort York**, which had the highest pickup volume, had a lower weighted average wait time of **5.54 minutes**. **University-Rosedale** had the lowest wait time among the top 10 wards at **5.40 minutes**.
 
+These differences are descriptive. Without an official service-level target or a measure of variability around the published averages, I cannot determine whether the observed differences are operationally significant.
+
 ![Wait time patterns by day and pickup ward](images/wait_time_patterns_by_day_and_ward.png)
 *Trip demand and weighted average wait time by day of week, alongside wait-time differences across the top 10 Toronto pickup wards.*
 
@@ -196,40 +199,39 @@ This suggests that wait time may depend on more than demand alone. Vehicle avail
 
 ### Recommendation
 
-Wait time should be monitored together with trip volume rather than using demand alone to decide where more vehicles are needed.
+Wait time should be monitored together with trip volume rather than using demand alone to identify potential service issues.
 
-Periods such as **Sunday** and areas such as **York Centre** may need closer attention because their wait times were relatively high even without the highest trip volumes.
+**Sunday** and **York Centre** would be useful areas for further review because they showed relatively high wait times without having the highest trip volumes.
+
+More detailed vehicle-availability data by **hour and location** would be needed before recommending specific changes to vehicle coverage.
 
 
-## Question 4: Is higher vehicle utilization associated with longer passenger wait times?
+## Question 4: Are more trips per active vehicle-day associated with longer passenger wait times?
 
 ### Finding
 
-I compared daily **Trips per Active Vehicle-Day** with **Weighted Avg Wait Time** to see whether busier vehicles were associated with longer passenger waits.
+I compared daily **Trips per Active Vehicle-Day** with **Weighted Avg Wait Time** to see whether days with more trips per active vehicle were associated with longer passenger waits.
 
 The scatter plot showed a modest upward pattern, and the correlation between the two measures was **0.31**.
 
-This indicates a **modest positive relationship**: days with higher vehicle utilization tended to have somewhat longer passenger wait times.
+This indicates a **modest positive association**: days with more trips per active vehicle tended to have somewhat longer passenger wait times.
 
 ![Vehicle utilization and passenger wait time](images/utilization_vs_wait_time.png)
 *Daily vehicle utilization compared with weighted average passenger wait time during Q2 2026.*
 
 ### Insight
 
-What stood out to me was that higher utilization was related to longer wait times, but the relationship was not very strong.
+What stood out to me was that higher trips per active vehicle-day were associated with somewhat longer wait times, but the relationship was not strong.
 
-This suggests that vehicle utilization may be one part of the wait-time picture, but it does not explain the variation by itself.
+This suggests that vehicle activity is only one part of the wait-time picture.
 
 Other factors, such as **where vehicles are available**, **time of day**, and changes in local demand could also contribute to passenger wait times.
 
 ### Recommendation
 
-Vehicle utilization should be monitored together with passenger wait time rather than treated as a separate efficiency measure.
+**Trips per Active Vehicle-Day** should be monitored together with passenger wait time rather than treated as a standalone performance measure.
 
-Higher trips per active vehicle can indicate greater vehicle productivity, but very high utilization may also coincide with longer wait times and should be monitored carefully.
-
-The **0.31 correlation** does not establish causation and this relationship is associative, so more detailed analysis would be needed before setting a specific utilization target. 
-
+The **0.31 correlation** shows a modest association, not causation, so more detailed analysis would be needed before using this measure to set operational targets.
 
 
 ## Limitations
@@ -246,8 +248,7 @@ I kept several limitations in mind while interpreting the results.
 
 - The analysis covers only **three months: April through June 2026**. The patterns found here may not represent other seasons or longer-term rideshare behaviour.
 
-- The **0.31 correlation** between vehicle utilization and wait time shows an association, not causation. Other factors may also affect passenger wait times.
-
+- The **0.31 correlation** between Trips per Active Vehicle-Day and wait time shows an association, not causation. The correlation is unadjusted and does not control for recurring time patterns such as **day of week** or other factors that may influence passenger wait time.
 
 ## Final Recommendations
 
@@ -276,6 +277,6 @@ The analysis showed that demand followed clear patterns by **day, hour, and loca
 
 One of the more interesting findings for me was that **higher demand did not always mean longer wait times**. Some lower-volume periods and areas still had relatively high wait times.
 
-I also found a **modest positive relationship** between vehicle utilization and passenger wait time, with a correlation of **0.31**. This suggests that utilization may affect service performance, but it is only one part of the picture.
+I also found a **modest positive relationship** between vehicle utilization and passenger wait time, with a correlation of **0.31**. This suggests that higher trips per active vehicle-day were associated with somewhat longer passenger wait times, but the relationship was modest and does not establish causation.
 
 Overall, the project showed me the value of looking at several operational measures together rather than judging performance from a single metric.
