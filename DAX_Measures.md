@@ -2,7 +2,7 @@
 
 This file contains the main DAX measures I created for the Toronto Rideshare Operations Analysis.
 
-These measures were used to calculate trip activity, passenger wait time, vehicle availability, vehicle utilization, and the relationship between utilization and wait time.
+These measures were used to calculate trip activity, passenger wait time, active vehicle count, trips per active vehicle-day, and the relationship between trips per active vehicle-day and wait time.
 
 ## Total Trips
 
@@ -58,7 +58,9 @@ AVERAGE(summary_stats[active_vehicles])
 
 ## Trips per Active Vehicle-Day
 
-Measures daily vehicle utilization by comparing reported trips started with the number of active vehicles.
+Calculates completed trips started per active vehicle-day in the selected filter context.
+
+I use this as a simple vehicle activity/productivity measure. It should not be interpreted as a time-based vehicle utilization rate.
 
 ```DAX
 Trips per Active Vehicle-Day =
@@ -94,10 +96,12 @@ DIVIDE(
 
 ## Utilization-Wait Correlation
 
-Calculates the Pearson correlation between daily Trips per Active Vehicle-Day and Weighted Avg Wait Time.
+## Activity-Wait Correlation
+
+Calculates the Pearson correlation between daily Trips per Active Vehicle-Day and Weighted Avg Wait Time. In the measure name, Activity refers specifically to Trips per Active Vehicle-Day.
 
 ```DAX
-Utilization-Wait Correlation (r) =
+Activity-Wait Correlation (r) =
 VAR __CORRELATION_TABLE = VALUES('DimDate'[Date])
 
 VAR __COUNT =
