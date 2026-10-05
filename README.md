@@ -220,7 +220,7 @@ The scatter plot showed a modest upward pattern, and the correlation between the
 
 This indicates a **modest positive association**: days with more trips per active vehicle tended to have somewhat longer passenger wait times.
 
-![Vehicle utilization and passenger wait time](images/utilization_vs_wait_time.png)
+![Trips per Active Vehicle-Day vs Wait Time](images/trips_per_vehicle_vs_wait_time.png)
 *Daily vehicle utilization compared with weighted average passenger wait time during Q2 2026.*
 
 ### Insight
