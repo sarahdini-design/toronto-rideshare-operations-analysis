@@ -58,7 +58,7 @@ AVERAGE(summary_stats[active_vehicles])
 
 ## Trips per Active Vehicle-Day
 
-Calculates completed trips started per active vehicle-day in the selected filter context.
+Calculates reported trips started per active vehicle-day in the selected filter context.
 
 I use this as a simple vehicle activity/productivity measure. It should not be interpreted as a time-based vehicle utilization rate.
 
@@ -93,8 +93,6 @@ DIVIDE(
     DISTINCTCOUNT(Trips_Q2_2026[dt])
 )
 ```
-
-## Utilization-Wait Correlation
 
 ## Activity-Wait Correlation
 
