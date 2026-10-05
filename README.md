@@ -40,6 +40,12 @@ I used two parts of the dataset:
 - monthly trip data, which includes fields for date, pickup hour, pickup municipality, pickup ward, trip counts, and average wait time;
 - daily summary data, which includes operational measures such as **reported trips started** and **active vehicles**.
 
+- As a validation check, I compared trip totals from the grouped trip data with `reported_trips_started` from the daily summary data.
+
+The two sources were closely aligned in each month of Q2. Across the full quarter, the grouped trip data contained **24,891,477 trips**, compared with **24,891,464 reported trips started** in the summary data — a difference of only **13 trips** (approximately **0.00005%**).
+
+This close reconciliation gave me additional confidence that the two source tables were consistent at the quarterly level, even though they were reported at different grains and used for different parts of the analysis.
+
 I combined the three monthly trip files into one **Q2 2026** dataset in Power Query.
 
 Using the trip data together with the daily summary data allowed me to look at both trip activity and vehicle availability during the quarter.
