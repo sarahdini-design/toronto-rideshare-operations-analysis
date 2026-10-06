@@ -9,7 +9,7 @@ An operational analysis of Q2 2026 rideshare activity across the GTA, focused on
 
 - Q2 2026 included approximately **24.9 million completed trips**, with **Saturday** showing the highest average daily trip volume at about **324,439 trips**.
 
-- **Sunday** had the highest weighted average wait time at **6.19 minutes**, despite having lower trip volume than Saturday.
+- **Sunday** had the highest weighted average wait time at **6.19 minutes**. By hour, wait time was highest around **8:00 AM at 7.66 minutes** and lowest around **8:00 PM at 4.52 minutes**.
 
 - **Spadina-Fort York** had the highest pickup volume, while **York Centre** had the highest weighted average wait time among the top 10 pickup wards at **6.49 minutes**.
 
