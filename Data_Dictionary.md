@@ -6,7 +6,7 @@ The project uses two source datasets from the **City of Toronto** and one date t
 
 This dictionary focuses on the fields that were used in the analysis and dashboard rather than listing every field available in the original source files.
 
----
+
 
 ## Tables
 
@@ -16,7 +16,7 @@ This dictionary focuses on the fields that were used in the analysis and dashboa
 | `summary_stats` | Source | Daily operational summary data, including reported trips started and active vehicles. |
 | `DimDate` | Created | Date table created in Power BI for time-based analysis, sorting, and consistent filtering across the model. |
 
----
+
 
 ## Trips_Q2_2026
 
@@ -35,7 +35,7 @@ This means one row does not represent one individual ride. A row can represent m
 | `trips_total` | Source | Whole Number | Number of completed trips represented by the grouped row. | Total Trips and weighted wait-time calculations. |
 | `waittime_avg` | Source | Decimal Number | Average passenger wait time in minutes for the trips represented by the row. | Passenger wait-time analysis. |
 
----
+
 
 ## Created Columns in Trips_Q2_2026
 
@@ -56,7 +56,7 @@ HOUR(Trips_Q2_2026[pickup_hr])
 |---|---|---|---|
 | `Pickup Hour` | Created | Whole Number | Hour of passenger pickup, from 0 to 23. |
 
----
+
 
 ### Ward Filter
 
@@ -85,7 +85,7 @@ In Q2 2026, records labelled **Not included elsewhere** represented **1,375,889 
 
 These records remained part of overall trip totals and were excluded only from Toronto ward-level comparisons.
 
----
+
 
 ## summary_stats
 
@@ -103,7 +103,7 @@ Unlike the trip table, which is grouped by hour and location, this table is repo
 
 The source table contains additional operational fields, but only the fields used directly in this project are documented here.
 
----
+
 
 ## DimDate
 
@@ -123,7 +123,7 @@ This made it possible to use consistent filters for **month**, **day of week**, 
 | `Day Number` | Created | Numeric day-of-week value. | Sorting day names in the correct order. |
 | `Day Type` | Created | Groups dates into `Weekday` or `Weekend`. | Comparing weekday and weekend demand patterns. |
 
----
+
 
 ## Why I Used a Separate Date Table
 
@@ -138,7 +138,7 @@ Instead of creating separate date logic inside each source table, I could use th
 
 This also allowed the same slicers to work across visuals built from both `Trips_Q2_2026` and `summary_stats`.
 
----
+
 
 ## Measures
 
@@ -159,7 +159,7 @@ The main measures include:
 
 Keeping the measures in a separate file makes it easier to see the calculation logic without mixing it with the source-field documentation.
 
----
+
 
 ## Data Notes
 
