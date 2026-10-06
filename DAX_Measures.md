@@ -177,7 +177,6 @@ CALCULATE(
     )
 )
 ```
-This returned 948 trips.
 
 
 ### Missing Wait Time Trip Share
@@ -191,7 +190,6 @@ DIVIDE(
     [Total Trips]
 )
 ```
-The result was approximately 0.0038% of total Q2 trip volume.
 
 
 ### Toronto Pickup Trips
@@ -205,7 +203,6 @@ CALCULATE(
     Trips_Q2_2026[pickup_municipality] = "Toronto"
 )
 ```
-This returned 22,899,091 trips.
 
 
 #### Toronto Not Included Elsewhere Trips
@@ -220,7 +217,6 @@ CALCULATE(
     Trips_Q2_2026[pickup_ward] = "Not included elsewhere"
 )
 ```
-This returned 1,375,889 trips.
 
 
 ### Toronto Not Included Elsewhere Share
@@ -234,6 +230,15 @@ DIVIDE(
     [Toronto Pickup Trips]
 )
 ```
-The result was approximately 6.01%.
+
+### Validation Results
+
+| Check | Q2 2026 Result |
+|---|---:|
+| Trips with Missing Wait Time | **948 trips** |
+| Missing Wait Time Trip Share | **0.0038%** |
+| Toronto Pickup Trips | **22,899,091 trips** |
+| Toronto Not Included Elsewhere Trips | **1,375,889 trips** |
+| Toronto Not Included Elsewhere Share | **6.01%** |
 
 
