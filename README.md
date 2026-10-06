@@ -1,6 +1,6 @@
 # Toronto Rideshare Operations Analysis
 
-An analysis of Toronto rideshare activity during Q2 2026, focused on trip demand, active vehicle count, passenger wait times, and trips per active vehicle-day.
+An operational analysis of Q2 2026 rideshare activity across the GTA, focused on trip demand, active vehicle count, passenger wait times, and trips per active vehicle-day, with Toronto-specific analysis at the pickup-ward level.
 
 **Tools:** Power BI · Power Query · DAX · GitHub
 
@@ -25,7 +25,7 @@ When I first reviewed the data, I wanted to understand more than just how many t
 I also wanted to see where and when rideshare activity was concentrated across Toronto. This led me to look at patterns by **date**, **day of week**, **pickup hour**, and **pickup ward**.
 
 The main goal of the project was to build a clearer picture of how trip activity, active vehicle count, and service performance interacted during the quarter.
-
+The source data covers rideshare activity across the GTA. For ward-level analysis, I filtered the visuals to City of Toronto pickup wards only.
 
 ## Data Sources
 
@@ -34,6 +34,8 @@ This project uses publicly available rideshare data from the **City of Toronto O
 - [Private Transportation Companies – Summary and Trip Data](https://open.toronto.ca/dataset/private-transportation-companies-summary-and-trip-data)
 
 The analysis covers **April, May, and June 2026**.
+
+The trip data includes activity across the GTA. For ward-level analysis, I filtered the visuals to City of Toronto pickup wards only.
 
 I used two parts of the dataset:
 
