@@ -18,7 +18,7 @@ An operational analysis of Q2 2026 rideshare activity across the GTA, focused on
 
 ## Project Overview
 
-This project looks at Toronto rideshare operations during **Q2 2026**, covering **April, May, and June**.
+This project looks at GTA rideshare operations during **Q2 2026**, covering **April, May, and June**.
 
 When I first reviewed the data, I wanted to understand more than just how many trips were being completed. I was interested in how **trip demand**, **active vehicle count**, and **passenger wait time** changed together, and whether more trips per active vehicle-day were associated with longer waits.
 
