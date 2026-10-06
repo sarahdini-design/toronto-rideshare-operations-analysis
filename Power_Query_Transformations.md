@@ -6,7 +6,7 @@ I kept the transformation process relatively simple because the source data was 
 
 The main goal was to combine the monthly files, check the structure of the data, and prepare the fields for use in the Power BI model.
 
----
+
 
 ## Trip Data
 
@@ -24,7 +24,7 @@ I imported the three monthly files into Power Query and combined them into one t
 
 This created one dataset covering the full **Q2 2026** analysis period.
 
----
+
 
 ## Combining the Monthly Files
 
@@ -38,7 +38,7 @@ The final analysis period covered:
 
 This represents **91 calendar days**.
 
----
+
 
 ## Data Type Preparation
 
@@ -61,7 +61,7 @@ In Power Query, the main retained fields were assigned the following data types:
 
 The `dt` field was converted to a date-only field for daily analysis and model relationships as **Date**, while `pickup_hr` was kept as **Date/Time/Timezone** so the pickup hour could still be derived later.
 
----
+
 
 ## Data Quality Checks
 
@@ -91,7 +91,7 @@ No duplicate rows were found in the combined trip dataset.
 
 The data covered all **91 days of Q2 2026**, confirming that the three monthly files had been combined correctly.
 
----
+
 
 ## Daily Summary Data
 
@@ -111,7 +111,7 @@ Unlike the trip table, I did not combine this data with the trip records in Powe
 
 Instead, both tables were connected through the `DimDate` table in the Power BI data model.
 
----
+
 
 ## Why the Tables Were Kept Separate
 
@@ -128,7 +128,7 @@ This avoided repeating daily summary values across many trip-level groups and al
 
 The tables were connected later through the shared date dimension.
 
----
+
 
 ## What I Did Not Change in Power Query
 
@@ -153,7 +153,7 @@ The DAX calculations are documented in:
 
 [`DAX_Measures.md`](./DAX_Measures.md)
 
----
+
 
 ## Additional Model Calculations
 
@@ -171,7 +171,7 @@ See:
 
 [`Model_Calculations.md`](./Model_Calculations.md)
 
----
+
 
 ## Final Data Preparation Flow
 
@@ -211,7 +211,7 @@ The preparation process for the project was:
 
 **Build the dashboard and analytical visuals**
 
----
+
 
 ## Why I Kept the Transformation Process Simple
 
