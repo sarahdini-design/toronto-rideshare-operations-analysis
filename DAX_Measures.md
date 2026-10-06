@@ -196,7 +196,7 @@ DIVIDE(
 
 Calculates completed trips with a pickup municipality of Toronto.
 
-```
+```DAX
 Toronto Pickup Trips =
 CALCULATE(
     [Total Trips],
@@ -209,7 +209,7 @@ CALCULATE(
 
 Calculates Toronto pickup trips where ward-level detail was published as `Not included elsewhere`.
 
-```
+```DAX
 Toronto Not Included Elsewhere Trips =
 CALCULATE(
     [Total Trips],
@@ -219,11 +219,11 @@ CALCULATE(
 ```
 
 
-### Toronto Not Included Elsewhere Share
+### Toronto  Not  Included  Elsewhere  Share
 
 Calculates the share of Toronto pickup trips without usable ward-level detail.
 
-```
+```DAX
 Toronto Not Included Elsewhere Share =
 DIVIDE(
     [Toronto Not Included Elsewhere Trips],
