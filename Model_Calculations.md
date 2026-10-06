@@ -48,7 +48,7 @@ Pickup Hour =
 HOUR(Trips_Q2_2026[pickup_hr])
 ```
 
-This column was used in the **Hourly Demand: Weekday vs Weekend** analysis.
+- **Sunday** had the highest weighted average wait time at **6.19 minutes**. By hour, wait time was highest around **8:00 AM at 7.66 minutes** and lowest around **8:00 PM at 4.52 minutes**.
 
 ---
 
