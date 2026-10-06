@@ -61,21 +61,35 @@ In Power Query, the main retained fields were assigned the following data types:
 
 The `dt` field was converted to a date-only field for daily analysis and model relationships as **Date**, while `pickup_hr` was kept as **Date/Time/Timezone** so the pickup hour could still be derived later.
 
+---
+
 ## Data Quality Checks
 
 Before building the dashboard, I reviewed the combined data for basic quality issues.
 
-I checked:
+The combined `Trips_Q2_2026` table contained **875,220 rows** covering all **91 days of Q2 2026**.
 
-- the date range;
-- column structure across the three monthly files;
-- duplicate records;
-- missing values in fields used in the analysis;
-- field data types.
+No missing values or errors were found in the key date, location, or trip-volume fields used in the analysis:
+
+- `dt`
+- `pickup_hr`
+- `pickup_municipality`
+- `pickup_ward`
+- `trips_total`
+
+The `waittime_avg` field contained **865 missing rows**. These rows represented **948 trips**, or approximately **0.0038% of total Q2 trip volume**.
+
+I retained these records in the source table. The weighted wait-time DAX measure excludes rows where `waittime_avg` is blank.
+
+The daily `summary_stats` table contained **91 rows**, with no missing values or errors in:
+
+- `dt`
+- `reported_trips_started`
+- `active_vehicles`
 
 No duplicate rows were found in the combined trip dataset.
 
-The data covered all **91 days of Q2 2026**, which confirmed that the three monthly files had been combined correctly.
+The data covered all **91 days of Q2 2026**, confirming that the three monthly files had been combined correctly.
 
 ---
 
