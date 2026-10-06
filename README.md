@@ -22,10 +22,10 @@ This project looks at GTA rideshare operations during **Q2 2026**, covering **Ap
 
 When I first reviewed the data, I wanted to understand more than just how many trips were being completed. I was interested in how **trip demand**, **active vehicle count**, and **passenger wait time** changed together, and whether more trips per active vehicle-day were associated with longer waits.
 
-I also wanted to see where and when rideshare activity was concentrated across Toronto. This led me to look at patterns by **date**, **day of week**, **pickup hour**, and **pickup ward**.
+I also wanted to see where and when rideshare activity was concentrated across the GTA, with more detailed geographic comparisons at the **City of Toronto pickup-ward level**. This led me to look at patterns by **date**, **day of week**, **pickup hour**, and **pickup ward**.
 
 The main goal of the project was to build a clearer picture of how trip activity, active vehicle count, and service performance interacted during the quarter.
-The source data covers rideshare activity across the GTA. For ward-level analysis, I filtered the visuals to City of Toronto pickup wards only.
+
 
 ## Data Sources
 
@@ -42,15 +42,24 @@ I used two parts of the dataset:
 - monthly trip data, which includes fields for date, pickup hour, pickup municipality, pickup ward, trip counts, and average wait time;
 - daily summary data, which includes operational measures such as **reported trips started** and **active vehicles**.
 
-As a validation check, I compared trip totals from the grouped trip data with `reported_trips_started` from the daily summary data.
-
-The two sources were closely aligned in each month of Q2. Across the full quarter, the grouped trip data contained **24,891,477 trips**, compared with **24,891,464 reported trips started** in the summary data — a difference of only **13 trips** (approximately **0.00005%**).
-
-This close reconciliation gave me additional confidence that the two source tables were consistent at the quarterly level, even though they were reported at different grains and used for different parts of the analysis.
-
 I combined the three monthly trip files into one **Q2 2026** dataset in Power Query.
 
 Using the trip data together with the daily summary data allowed me to compare trip activity with the daily active vehicle count during the quarter.
+
+
+## Data Quality Checks
+
+The combined trip table contained **875,220 rows** covering all **91 days of Q2 2026**.
+
+No missing values or errors were found in the key date, location, or trip-volume fields used in the analysis, including `dt`, `pickup_hr`, `pickup_municipality`, `pickup_ward`, and `trips_total`.
+
+The `waittime_avg` field contained **865 missing rows**. These rows represented only **948 trips**, or approximately **0.0038% of total Q2 trip volume**. I retained the records in the source table, while the weighted wait-time measure excludes rows where wait time is blank.
+
+The daily `summary_stats` table contained **91 rows**, with no missing values or errors in `dt`, `reported_trips_started`, or `active_vehicles`.
+
+As an additional validation check, I compared trip totals from the grouped trip data with `reported_trips_started` from the daily summary data. Across the quarter, the grouped trip data contained **24,891,477 trips**, compared with **24,891,464 reported trips started** — a difference of only **13 trips** (approximately **0.00005%**).
+
+The monthly totals were also closely aligned, which gave me additional confidence that the two source tables were consistent despite being reported at different grains.
 
 
 ## Power BI Dashboard
@@ -80,7 +89,7 @@ I also added **Month** and **Day Type** slicers so the results can be compared a
 
 ## Main Analytical Question
 
-How did **trip demand**, **active vehicle count**, **passenger wait time**, and **Trips per Active Vehicle-Day** interact across Toronto rideshare operations during **Q2 2026**?
+How did **trip demand**, **active vehicle count**, **passenger wait time**, and **Trips per Active Vehicle-Day** interact across GTA rideshare operations during **Q2 2026**, with additional geographic analysis of City of Toronto pickup wards?
 
 
 ## Analytical Approach
@@ -89,7 +98,9 @@ Before starting the analysis, I reviewed the **City of Toronto technical documen
 
 One important point was that the trip data does not represent individual rides. The data is already **aggregated by hour and pickup/drop-off location**. Because each row can represent a different number of trips, I used **trip volume as a weight** when calculating average wait time instead of taking a simple average of the published `waittime_avg` values.
 
-I also noted that some trip records do not include ward-level detail because of the City's privacy rules. These records appear as **Not included elsewhere** and were not used when comparing individual Toronto wards.
+I also noted that some Toronto trip records do not include usable ward-level detail because of the City's privacy rules. These records appear as **Not included elsewhere**.
+
+For ward-level visuals, I used a `Ward Filter` to exclude **Not included elsewhere** while keeping those records in the overall dataset. These records represented **1,375,889 trips**, or approximately **6.01% of Toronto pickup trips**.
 
 The documentation also notes that **trip cancellation counts dropped significantly starting in January 2026** and may have been affected by a methodological change. Since my analysis covers **Q2 2026**, I decided not to use cancellation metrics in the main analysis.
 
@@ -148,18 +159,14 @@ High-volume pickup areas such as **Spadina-Fort York**, **Toronto Centre**, and 
 
 ### Finding
 
-Across the **91-day Q2 period**, active vehicle count generally moved in the same direction as trip activity.
+Across all **91 days of Q2 2026**, daily trip activity and active vehicle count showed a clear positive relationship.
 
-The dates below are examples of this broader daily pattern rather than the basis for the conclusion.
+Higher-trip days generally had more active vehicles, although the relationship was not one-to-one. Days with similar trip activity could still show different active vehicle counts.
 
-For example, on **May 18, 2026**, there were **196,817 reported trips started** and **27,538 active vehicles**.
+The full-quarter scatter plot supports the same pattern seen in the daily time-series view and avoids drawing conclusions from only a small number of individual dates.
 
-On **May 23, 2026**, reported trips increased to **377,072**, while active vehicles increased to **35,796**.
-
-In this example, both trip activity and active vehicle count increased, although trip activity increased at a faster rate.
-
-![Trip demand and active vehicles over time](images/demand_vs_active_vehicles.png)
-*Daily reported trips started and active vehicles during Q2 2026.*
+![Trip activity vs active vehicles](images/trip_activity_vs_active_vehicles.png)
+*Daily reported trips started compared with active vehicle count across the 91 days of Q2 2026.*
 
 ### Insight
 
@@ -176,7 +183,8 @@ Active vehicle count should be monitored together with trip activity and **Trips
 This would make it easier to identify periods when trip activity is increasing faster than the number of active vehicles, while avoiding assumptions about whether vehicle supply was sufficient without more detailed availability data.
 
 
-## Question 3: On which days and in which pickup wards do riders experience longer wait times?
+## Question 3: When do riders experience longer wait times, and how does this vary across Toronto pickup wards?
+
 ### Finding
 
 Wait time did not always move with trip demand.
@@ -184,6 +192,17 @@ Wait time did not always move with trip demand.
 **Sunday** had the highest weighted average wait time at **6.19 minutes**, even though average daily trip volume was **260,937 trips**.
 
 By comparison, **Saturday** had the highest average daily trip volume at **324,439 trips**, but its weighted average wait time was lower at **5.88 minutes**.
+
+Hourly patterns added another layer to the wait-time analysis.
+
+Across Q2, weighted average wait time was highest around **8:00 AM at 7.66 minutes**, with other elevated periods around **4:00 AM at 7.43 minutes** and **5:00 AM at 7.26 minutes**.
+
+By comparison, average wait time was lowest around **8:00 PM at 4.52 minutes** and **7:00 PM at 4.83 minutes**.
+
+The highest individual day-hour combination was **Thursday at 4:00 AM**, with a weighted average wait time of **9.45 minutes**.
+
+![Hourly wait time by day of week](images/hourly_wait_time_heatmap.png)
+*Weighted average passenger wait time by pickup hour and day of week during Q2 2026.*
 
 A similar pattern appeared across pickup wards.
 
@@ -200,15 +219,19 @@ These differences are descriptive. Without an official service-level target or a
 
 What stood out to me was that higher trip volume did not always mean longer passenger wait times.
 
-Sunday had lower trip activity than Saturday but a longer average wait time. The same pattern appeared across wards, where **York Centre** had the longest wait time even though it was not one of the highest-volume pickup areas.
+Sunday had lower trip activity than Saturday but a longer average wait time. The hourly analysis also showed that wait times were generally higher during the **early morning**, particularly around **4:00–8:00 AM**, while evening wait times were lower.
 
-This suggests that wait time may depend on more than demand alone. Local vehicle availability or distribution could also contribute to these patterns, although the current daily vehicle data cannot test this directly by ward or hour.
+The same pattern of demand not fully explaining wait time appeared across wards, where **York Centre** had the longest wait time among the top 10 pickup wards even though it was not one of the highest-volume areas.
+
+This suggests that wait time depends on more than demand alone. Time of day, local vehicle availability, and vehicle distribution could also contribute to these patterns, although the available vehicle data cannot test availability directly by ward or hour.
 
 ### Recommendation
 
 Wait time should be monitored together with trip volume rather than using demand alone to identify potential service issues.
 
-**Sunday** and **York Centre** would be useful areas for further review because they showed relatively high wait times without having the highest trip volumes.
+The **early-morning period**, especially around **4:00–8:00 AM**, would be useful for further review because wait times were consistently higher than during the evening.
+
+**Sunday** and **York Centre** would also be useful areas for further review because they showed relatively high wait times without having the highest trip volumes.
 
 More detailed vehicle-availability data by **hour and location** would be needed before recommending specific changes to vehicle coverage.
 
@@ -247,7 +270,9 @@ I kept several limitations in mind while interpreting the results.
 
 - The trip data is already **aggregated by hour and location**, so it does not represent individual rides. This means I could analyze overall patterns, but not rider-level variation.
 
-- Some records do not include **ward-level detail** because of the City's privacy rules. These records appear as **Not included elsewhere**, so the ward analysis does not represent all trip activity.
+- Some Toronto pickup records do not include usable **ward-level detail** because of the City's privacy rules. Records labelled **Not included elsewhere** represented **1,375,889 trips**, or approximately **6.01% of Toronto pickup trips**. These records were retained in the overall dataset but excluded from Toronto ward-level comparisons.
+
+- The `waittime_avg` field contained **865 missing rows**, representing only **948 trips** or approximately **0.0038% of total Q2 trip volume**. These rows were excluded from the weighted wait-time calculation when wait time was blank.
 
 - **Active Vehicles** is available as a daily summary measure. Because of this, I could compare daily active vehicle count with daily trip activity, but I could not measure vehicle availability directly by **ward or hour**.
 
@@ -262,11 +287,13 @@ I kept several limitations in mind while interpreting the results.
 
 Based on the patterns I found in the data, I would focus on the following areas:
 
-- Monitor active vehicle count alongside recurring demand patterns, especially during **higher-demand days and late afternoon/evening hours**.
+- Monitor active vehicle count alongside recurring demand patterns, particularly on higher-demand days.
 
 - Use high-volume pickup areas such as **Spadina-Fort York**, **Toronto Centre**, and **University-Rosedale** as priorities for further location-level service review.
 
 - Monitor **wait time together with trip volume**. Higher demand did not always lead to longer waits, so demand alone should not be used to judge service performance.
+
+- Review **early-morning wait-time patterns**, particularly around **4:00–8:00 AM**, where average waits were consistently higher than during evening hours.
 
 - Review areas such as **York Centre**, where wait time was relatively high even though trip volume was not among the highest.
 
@@ -276,11 +303,11 @@ Based on the patterns I found in the data, I would focus on the following areas:
 
 ## Conclusion
 
-This project helped me look at Toronto rideshare operations from more than one angle using **Q2 2026** data.
+This project helped me look at GTA rideshare operations from more than one angle using **Q2 2026** data, with additional geographic analysis focused on City of Toronto pickup wards.
 
 Instead of looking only at trip volume, I compared **demand**, **active vehicle count**, **passenger wait time**, and **Trips per Active Vehicle-Day** to understand how they changed together.
 
-The analysis showed that demand followed clear patterns by **day, hour, and location**, while active vehicle count generally moved with changes in trip activity.
+The analysis showed that demand followed clear patterns by **day, hour, and location**, while active vehicle count generally moved with changes in trip activity. Wait time also varied by time of day, with higher averages during the early morning and lower averages during the evening.
 
 One of the more interesting findings for me was that **higher demand did not always mean longer wait times**. Some lower-volume periods and areas still had relatively high wait times.
 
