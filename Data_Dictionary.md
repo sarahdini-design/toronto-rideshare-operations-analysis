@@ -81,6 +81,10 @@ IF(
 
 The excluded records were not removed from the overall trip analysis. They were excluded only where valid ward-level detail was required.
 
+In Q2 2026, records labelled **Not included elsewhere** represented **1,375,889 trips**, or approximately **6.01% of Toronto pickup trips**.
+
+These records remained part of overall trip totals and were excluded only from Toronto ward-level comparisons.
+
 ---
 
 ## summary_stats
