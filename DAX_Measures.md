@@ -158,3 +158,82 @@ I created this measure as a basic comparison with the weighted wait-time calcula
 Simple Avg Wait Time =
 AVERAGE(Trips_Q2_2026[waittime_avg])
 ```
+
+## Data Quality and Validation Measures
+
+These measures were created to quantify data-quality checks used in the project documentation. They were not used as headline dashboard KPIs.
+
+### Trips with Missing Wait Time
+
+Counts the completed trips represented by rows where `waittime_avg` is blank.
+
+```DAX
+Trips with Missing Wait Time =
+CALCULATE(
+    [Total Trips],
+    FILTER(
+        Trips_Q2_2026,
+        ISBLANK(Trips_Q2_2026[waittime_avg])
+    )
+)
+```
+This returned 948 trips.
+
+
+### Missing Wait Time Trip Share
+
+Calculates the share of total Q2 trip volume represented by records with missing wait time.
+
+```
+Missing Wait Time Trip Share =
+DIVIDE(
+    [Trips with Missing Wait Time],
+    [Total Trips]
+)
+```
+The result was approximately 0.0038% of total Q2 trip volume.
+
+
+### Toronto Pickup Trips
+
+Calculates completed trips with a pickup municipality of Toronto.
+
+```
+Toronto Pickup Trips =
+CALCULATE(
+    [Total Trips],
+    Trips_Q2_2026[pickup_municipality] = "Toronto"
+)
+```
+This returned 22,899,091 trips.
+
+
+#### Toronto Not Included Elsewhere Trips
+
+Calculates Toronto pickup trips where ward-level detail was published as `Not included elsewhere`.
+
+```
+Toronto Not Included Elsewhere Trips =
+CALCULATE(
+    [Total Trips],
+    Trips_Q2_2026[pickup_municipality] = "Toronto",
+    Trips_Q2_2026[pickup_ward] = "Not included elsewhere"
+)
+```
+This returned 1,375,889 trips.
+
+
+### Toronto Not Included Elsewhere Share
+
+Calculates the share of Toronto pickup trips without usable ward-level detail.
+
+```
+Toronto Not Included Elsewhere Share =
+DIVIDE(
+    [Toronto Not Included Elsewhere Trips],
+    [Toronto Pickup Trips]
+)
+```
+The result was approximately 6.01%.
+
+
