@@ -1,6 +1,6 @@
 # Calculated Tables and Columns
 
-This file documents the calculated table and columns I created in Power BI for the Toronto Rideshare Operations Analysis.
+This file documents the calculated table and columns I created in Power BI for the GTA Rideshare Operations Analysis.
 
 These calculations were added to support date filtering, hourly demand analysis, and ward-level comparisons.
 
