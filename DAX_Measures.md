@@ -60,7 +60,7 @@ AVERAGE(summary_stats[active_vehicles])
 
 Calculates reported trips started per active vehicle-day in the selected filter context.
 
-I use this as a simple vehicle activity/productivity measure. It should not be interpreted as a time-based vehicle utilization rate.
+I use this as a simple vehicle activity/productivity measure. It does not measure how much time vehicles were actively engaged or available.
 
 ```DAX
 Trips per Active Vehicle-Day =
