@@ -1,6 +1,6 @@
 # Data Dictionary
 
-This file documents the main tables and fields used in the Toronto Rideshare Operations Analysis.
+This file documents the main tables and fields used in the GTA Rideshare Operations Analysis.
 
 The project uses two source datasets from the **City of Toronto** and one date table created in **Power BI**.
 
@@ -20,7 +20,7 @@ This dictionary focuses on the fields that were used in the analysis and dashboa
 
 ## Trips_Q2_2026
 
-The original City of Toronto trip data is already **aggregated by hour and location**.
+The original GTA trip data is already **aggregated by hour and location**.
 
 This means one row does not represent one individual ride. A row can represent multiple completed trips with the same time and location grouping.
 
