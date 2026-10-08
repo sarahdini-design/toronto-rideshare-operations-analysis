@@ -2,7 +2,7 @@
 
 This file documents the main tables and fields used in the GTA Rideshare Operations Analysis.
 
-The project uses two source datasets published by the **City of Toronto** and one date table created in **Power BI**.
+The project uses two source tables published by the **City of Toronto** and one date table created in **Power BI**.
 
 This dictionary focuses on the fields that were used in the analysis and dashboard rather than listing every field available in the original source files.
 
