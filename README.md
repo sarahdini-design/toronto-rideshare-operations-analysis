@@ -113,7 +113,7 @@ For the analysis, I created several DAX measures, including:
 - **Total Trips** to measure overall trip activity;
 - **Weighted Avg Wait Time** to account for the different number of trips represented by each row;
 - **Average Active Vehicles** to represent the daily active vehicle count;
-- **Trips per Active Vehicle-Day** as a simple vehicle activity/productivity measure rather than a time-based utilization rate;
+- **Trips per Active Vehicle-Day** as a simple vehicle activity/productivity measure that does not measure how much time vehicles were actively engaged or available;
 - **Avg Daily Trips** to compare activity across days of the week;
 - **Avg Trips per Hour** to compare hourly demand patterns.
 
