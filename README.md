@@ -68,7 +68,7 @@ I built the report in **Power BI** with two main dashboards:
 
 **Operations Dashboard** — a high-level view of trip volume, wait time, active vehicles, trips per active vehicle-day, day-of-week patterns, and pickup locations.
 
-![Toronto Rideshare Operations Dashboard](images/operations_dashboard.png)
+![GTA Rideshare Operations Dashboard](images/operations_dashboard.png)
   *GTA rideshare operations overview for Q2 2026.*
 
 
