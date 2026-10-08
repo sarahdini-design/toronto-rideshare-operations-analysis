@@ -2,7 +2,7 @@
 
 This file documents the calculated table and columns I created in Power BI for the GTA Rideshare Operations Analysis.
 
-These calculations were added to support date filtering, hourly demand analysis, and ward-level comparisons.
+These calculations were added to support date filtering, hourly demand and wait-time analysis, and ward-level comparisons.
 
 ---
 
