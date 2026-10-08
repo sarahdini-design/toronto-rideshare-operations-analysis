@@ -1,6 +1,6 @@
 # DAX Measures
 
-This file contains the main DAX measures I created for the Toronto Rideshare Operations Analysis.
+This file contains the main DAX measures I created for the GTA Rideshare Operations Analysis.
 
 These measures were used to calculate trip activity, passenger wait time, active vehicle count, trips per active vehicle-day, and the relationship between trips per active vehicle-day and wait time.
 
