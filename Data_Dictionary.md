@@ -2,7 +2,7 @@
 
 This file documents the main tables and fields used in the GTA Rideshare Operations Analysis.
 
-The project uses two source datasets from the **City of Toronto** and one date table created in **Power BI**.
+The project uses two source datasets published by the **City of Toronto** and one date table created in **Power BI**.
 
 This dictionary focuses on the fields that were used in the analysis and dashboard rather than listing every field available in the original source files.
 
@@ -20,9 +20,10 @@ This dictionary focuses on the fields that were used in the analysis and dashboa
 
 ## Trips_Q2_2026
 
-The original City of Toronto trip data is already **aggregated by hour and location**.
+The trip dataset published by the City of Toronto, which includes activity across the GTA, is already **aggregated by hour and location**.
 
 This means one row does not represent one individual ride. A row can represent multiple completed trips with the same time and location grouping.
+
 
 ### Source Fields Used
 
@@ -30,7 +31,7 @@ This means one row does not represent one individual ride. A row can represent m
 |---|---|---|---|---|
 | `dt` | Source | Date | Date of passenger pickup. | Daily and quarterly trip analysis. |
 | `pickup_hr` | Source | Date/Time/Timezone | Date and hour of passenger pickup. | Creating the hourly demand view. |
-| `pickup_municipality` | Source | Text | Municipality at the passenger pickup point. | Keeping the geographic analysis focused on Toronto. |
+| `pickup_municipality` | Source | Text | Municipality at the passenger pickup point. | Distinguishing GTA municipalities and supporting Toronto-specific geographic analysis. |
 | `pickup_ward` | Source | Text | Toronto ward at the passenger pickup point when ward-level detail is available. | Comparing trip volume and wait time across Toronto wards. |
 | `trips_total` | Source | Whole Number | Number of completed trips represented by the grouped row. | Total Trips and weighted wait-time calculations. |
 | `waittime_avg` | Source | Decimal Number | Average passenger wait time in minutes for the trips represented by the row. | Passenger wait-time analysis. |
@@ -169,5 +170,5 @@ A few details from the City of Toronto technical documentation were important wh
 - Some records do not include ward-level detail because of privacy rules and appear as **Not included elsewhere**.
 - `waittime_avg` is an average for each grouped row, so I created a **weighted average wait-time measure** using `trips_total`.
 - `active_vehicles` is available at the **daily level**, so I could compare daily active vehicle count with trip activity but could not measure vehicle availability directly by ward or hour.
-- **Trips per Active Vehicle-Day** is used as a simple activity/productivity measure and should not be interpreted as a time-based utilization rate.
+- **Trips per Active Vehicle-Day** is used as a simple vehicle activity/productivity measure. It does not measure how much time vehicles were actively engaged or available.
 - The City notes that cancellation data from **January 2026 onward** may have been affected by a methodological change. Cancellation measures were therefore not used in the main analysis.
