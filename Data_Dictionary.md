@@ -30,7 +30,7 @@ This means one row does not represent one individual ride. A row can represent m
 | Field | Source / Created | Data Type | Description | Used For |
 |---|---|---|---|---|
 | `dt` | Source | Date | Date of passenger pickup. | Daily and quarterly trip analysis. |
-| `pickup_hr` | Source | Date/Time/Timezone | Date and hour of passenger pickup. | Creating the hourly demand view. |
+| `pickup_hr` | Source | Date/Time/Timezone | Date and hour of passenger pickup. | Hourly demand and wait-time analysis. |
 | `pickup_municipality` | Source | Text | Municipality at the passenger pickup point. | Distinguishing GTA municipalities and supporting Toronto-specific geographic analysis. |
 | `pickup_ward` | Source | Text | Toronto ward at the passenger pickup point when ward-level detail is available. | Comparing trip volume and wait time across Toronto wards. |
 | `trips_total` | Source | Whole Number | Number of completed trips represented by the grouped row. | Total Trips and weighted wait-time calculations. |
@@ -46,7 +46,7 @@ I created a small number of additional columns to make the source data easier to
 
 I created `Pickup Hour` to extract the hour of day from the original pickup timestamp.
 
-This allowed me to compare hourly demand patterns and build the **Weekday vs Weekend** hourly demand visual.
+This allowed me to compare hourly demand patterns and build both the **Weekday vs Weekend** demand visual and the **Hourly Wait Time by Day of Week** heatmap.
 
 ```DAX
 Pickup Hour =
