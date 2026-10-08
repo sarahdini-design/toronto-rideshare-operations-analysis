@@ -163,6 +163,7 @@ AVERAGE(Trips_Q2_2026[waittime_avg])
 
 These measures were created to quantify data-quality checks used in the project documentation. They were not used as headline dashboard KPIs.
 
+
 ### Trips with Missing Wait Time
 
 Counts the completed trips represented by rows where `waittime_avg` is blank.
@@ -183,7 +184,7 @@ CALCULATE(
 
 Calculates the share of total Q2 trip volume represented by records with missing wait time.
 
-```
+```DAX
 Missing Wait Time Trip Share =
 DIVIDE(
     [Trips with Missing Wait Time],
@@ -205,7 +206,7 @@ CALCULATE(
 ```
 
 
-### Toronto  Not  Included  Elsewhere  Trips
+### Toronto Not Included Elsewhere Trips
 
 Calculates Toronto pickup trips where ward-level detail was published as `Not included elsewhere`.
 
@@ -219,7 +220,7 @@ CALCULATE(
 ```
 
 
-### Toronto  Not  Included  Elsewhere  Share
+### Toronto Not Included Elsewhere Share
 
 Calculates the share of Toronto pickup trips without usable ward-level detail.
 
