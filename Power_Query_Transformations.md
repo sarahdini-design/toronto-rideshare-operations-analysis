@@ -1,6 +1,6 @@
 # Power Query Transformations
 
-This file documents the main data preparation steps I used in Power Query for the Toronto Rideshare Operations Analysis.
+This file documents the main data preparation steps I used in Power Query for the GTA Rideshare Operations Analysis.
 
 I kept the transformation process relatively simple because the source data was already structured and published in an analysis-ready format by the City of Toronto.
 
