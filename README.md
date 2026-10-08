@@ -1,4 +1,4 @@
-# Toronto Rideshare Operations Analysis
+# GTA Rideshare Operations Analysis
 
 An operational analysis of Q2 2026 rideshare activity across the GTA, focused on trip demand, active vehicle count, passenger wait times, and trips per active vehicle-day, with Toronto-specific analysis at the pickup-ward level.
 
