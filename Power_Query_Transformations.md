@@ -54,10 +54,7 @@ In Power Query, the main retained fields were assigned the following data types:
 | `pickup_community_council` | Text | Geographic reference field. |
 | `pickup_ward` | Text | Ward-level analysis. |
 | `trips_total` | Whole Number | Completed trip volume. |
-| `fare_avg` | Decimal Number | Average fare value from the source data. |
-| `distance_avg` | Decimal Number | Average trip distance from the source data. |
 | `waittime_avg` | Decimal Number | Average passenger wait time. |
-| `duration_avg` | Decimal Number | Average trip duration. |
 
 The `dt` field was converted to a date-only field for daily analysis and model relationships as **Date**, while `pickup_hr` was kept as **Date/Time/Timezone** so the pickup hour could still be derived later.
 
